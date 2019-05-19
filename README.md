@@ -7,3 +7,6 @@ To run program make sure to install npm packages as mentioned below from bash te
 * $ npm init
 * $ npm install mysql
 * $ npm install require
+
+**Working functions snippit**
+![Image of Yaktocat](bamazon\Capture.PNG)
