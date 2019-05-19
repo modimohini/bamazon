@@ -9,4 +9,4 @@ To run program make sure to install npm packages as mentioned below from bash te
 * $ npm install require
 
 **Working functions snippit**
-![Image of Yaktocat](bamazon\Capture.PNG)
+![Image of Questions](Capture.PNG)
