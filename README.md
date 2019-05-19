@@ -8,5 +8,6 @@ To run program make sure to install npm packages as mentioned below from bash te
 * $ npm install mysql
 * $ npm install require
 
-**Working functions snippit**
+**Working functions snippit** :
+
 ![Image of Questions](Capture.PNG)

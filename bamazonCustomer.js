@@ -34,11 +34,28 @@ function afterConnection() {
       .prompt({
         name: "item_id",
         type: "input",
-        message: "What ID of the product they would like to buy?"
+        message: "What Item_ID of the product you would like to buy?"
       })
-      .then(function(answer) {
+      .then(function(answer1) {
         var query = "SELECT item_id, product_name, department_name, year, price,stock_quantity FROM products WHERE ?";
-        connection.query(query,answer,function(err, res) {
+        connection.query(query,answer1,function(err, res) {
+           if (err) throw err;
+           console.table(res);          
+           question2(); 
+        });
+      });
+  }
+
+  function question2() {
+    inquirer
+      .prompt({
+        name: "stock_quantity",
+        type: "input",
+        message: "How many units of the product you would like to buy?"
+      })
+      .then(function(answer2) {
+        var query = "SELECT item_id, product_name, department_name, year, price,stock_quantity FROM products WHERE ?";
+        connection.query(query,answer2,function(err, res) {
             if (err) throw err;
             console.table(res);          
           connection.end();
@@ -46,8 +63,3 @@ function afterConnection() {
       });
   }
 
-
-
-
-/* The first should ask them the ID of the product they would like to buy.
-The second message should ask how many units of the product they would like to buy. */
