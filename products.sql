@@ -3,7 +3,7 @@ CREATE database bamazon;
 USE bamazon;
 
 CREATE TABLE products (
-  item_id INT NOT NULL,
+  item_id INTEGER(11) AUTO_INCREMENT NOT NULL,
   product_name VARCHAR(100) NULL,
   department_name VARCHAR(100) NULL,
   year INT NULL,
@@ -14,7 +14,6 @@ CREATE TABLE products (
 
 SELECT * FROM products;
 USE bamazon;
-
 
 
 INSERT INTO products ( item_id, product_name, department_name, year, price,stock_quantity)
