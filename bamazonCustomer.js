@@ -31,7 +31,8 @@ function afterConnection() {
 
 function question1() {
     inquirer
-        .prompt({
+        .prompt(
+            {
             name: "item_id",
             type: "input",
             message: "What Item_ID of the product you would like to buy?"
@@ -49,6 +50,7 @@ function question1() {
 function question2() {
     inquirer
         .prompt(
+            
             {
 
                 name: "stock_quantity",
@@ -56,17 +58,22 @@ function question2() {
                 message: "How many units of the product you would like to buy?",
                 validate: function(value) {
                     if (isNaN(value) === false) {
-                      return true;
+                   
+                    return true;
                     }
                     return false;
                   }
             }
         )
         .then(function (answer2) {
-            var query = "select price*stock_quantity as cost from products";
-            connection.query(query, answer2, function (err, res) {
+           // var query = "select price*stock_quantity as cost from products";
+
+            var query ="select * from products where item_id=5 and stock_quantity >?";
+            connection.query(query, [answer2.stock_quantity], function (err, res) {
                 if (err) throw err;
                 console.table(res);
+            
+
             });            
         });
 }
