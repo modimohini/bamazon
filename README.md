@@ -17,3 +17,8 @@ To run program make sure to install npm packages as mentioned below from bash te
 
 ![Image of Manager Question1](ManagerJS_Question1.PNG)
 
+**Working functions snippit** :
+* Bamazon Manager Adding Inventory to the List of table from NodeJS to MySQL
+
+![Image of Manager Question1](Manager_Adding_Inventory.PNG)
+
