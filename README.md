@@ -8,5 +8,10 @@ To run program make sure to install npm packages as mentioned below from bash te
 * $ npm install mysql require inquirer
 
 **Working functions snippit** :
-
+* Bamazon Customer 
 ![Image of Questions](Capture.PNG)
+
+**Working functions snippit** :
+* Bamazon Manager
+![Image of Manager Question1](ManagerJS_Question1.PNG)
+

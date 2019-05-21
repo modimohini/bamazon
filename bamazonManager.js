@@ -69,10 +69,10 @@ function saleSearch() {
         message: "View Products for Sale?"
       })
       .then(function(answer) {
-        var query = "SELECT position, song, year FROM top5000 WHERE ?";
-        connection.query(query, { artist: answer.artist }, function(err, res) {
+        var query = "SELECT * FROM products where?";
+        connection.query(query, { product_name: answer.product_name}, function(err, res) {
           for (var i = 0; i < res.length; i++) {
-            console.log("Position: " + res[i].position + " || Song: " + res[i].song + " || Year: " + res[i].year);
+            console.log("Position: " + res[i].item_id + " || Product Name: " + res[i].product_name + " || Price: " + res[i].price + " || stock_quantity "+ res[i].stock_quantity);
           }
           runSearch();
         });
