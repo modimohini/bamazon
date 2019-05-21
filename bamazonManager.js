@@ -84,10 +84,10 @@ function saleSearch() {
             var query = "SELECT * FROM products where?";
             connection.query(query, { product_name: answer.product_name }, function (err, res) {
                 for (var i = 0; i < res.length; i++) {
-                    console.log("Position: " + res[i].item_id + 
-                    " || Product Name: " + res[i].product_name +
-                     " || Price: " + res[i].price + 
-                     " || stock_quantity " + res[i].stock_quantity);
+                    console.log("Position: " + res[i].item_id +
+                        " || Product Name: " + res[i].product_name +
+                        " || Price: " + res[i].price +
+                        " || stock_quantity " + res[i].stock_quantity);
                 }
                 runSearch();
             });
@@ -103,42 +103,42 @@ function lowInventorySearch() {
 }
 
 function AddInventory() {
-inquirer
-    .prompt([
-      {
-        name: "item_id",
-        type: "input",
-        message: "Enter item_id for the product you want to add/update inventory: ",
-        validate: function(value) {
-          if (isNaN(value) === false) {
-            return true;
-          }
-          return false;
-        }
-      },
-      {
-        name: "stock_quantity",
-        type: "input",
-        message: "Enter stock_quantity: ",
-        validate: function(value) {
-          if (isNaN(value) === false) {
-            return true;
-          }
-          return false;
-        }
-      }
-    ])
-    .then(function(answer) {
-        //UPDATE products SET stock_quantity = 7 WHERE item_id = 1;
-        var query = "UPDATE products SET stock_quantity = ? WHERE item_id = ?";
-        connection.query(query, [answer.stock_quantity, answer.item_id], function(err, res) {
-          //for (var i = 0; i < res.length; i++) 
-          {
-            console.table(res);
-          }
-          runSearch();
+    inquirer
+        .prompt([
+            {
+                name: "item_id",
+                type: "input",
+                message: "Enter item_id for the product you want to add/update inventory: ",
+                validate: function (value) {
+                    if (isNaN(value) === false) {
+                        return true;
+                    }
+                    return false;
+                }
+            },
+            {
+                name: "stock_quantity",
+                type: "input",
+                message: "Enter stock_quantity: ",
+                validate: function (value) {
+                    if (isNaN(value) === false) {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+        ])
+        .then(function (answer) {
+            //Example : UPDATE products SET stock_quantity = 7 WHERE item_id = 1;
+            var query = "UPDATE products SET stock_quantity = ? WHERE item_id = ?";
+            connection.query(query, [answer.stock_quantity, answer.item_id], function (err, res) {
+                //for (var i = 0; i < res.length; i++) 
+                {
+                    console.table(res);
+                }
+                runSearch();
+            });
         });
-      });
 }
 /* function AddNewProduct() {
     var query = "INSERT INTO products ( product_name, department_name, year, price,stock_quantity)
@@ -149,3 +149,76 @@ inquirer
     });
 } */
 
+function AddNewProduct() {
+    inquirer
+        .prompt([
+            {
+                name: "product_name",
+                type: "input",
+                message: "Enter Product Name: ",
+                validate: function (value) {
+                    if (isNaN(value) === false) {
+                        return true;
+                    }
+                    return false;
+                }
+            },
+            {
+                name: "department_name",
+                type: "input",
+                message: "Enter Department Name for inventory: ",
+                validate: function (value) {
+                    if (isNaN(value) === false) {
+                        return true;
+                    }
+                    return false;
+                }
+            },
+            {
+                name: "year",
+                type: "input",
+                message: "Enter year of the product: ",
+                validate: function (value) {
+                    if (isNaN(value) === false) {
+                        return true;
+                    }
+                    return false;
+                }
+            },
+            {
+                name: "price",
+                type: "input",
+                message: "Enter price of the product: ",
+                validate: function (value) {
+                    if (isNaN(value) === false) {
+                        return true;
+                    }
+                    return false;
+                }
+            },
+            {
+                name: "stock_quantity",
+                type: "input",
+                message: "Enter stock_quantity: ",
+                validate: function (value) {
+                    if (isNaN(value) === false) {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+        ])
+        .then(function (answer) {
+            //"INSERT INTO products ( product_name, department_name, year, price,stock_quantity)
+            //VALUES ("Macy", "Dress", 2019, 10, 5)";
+            console.log(answer.product_name);
+            console.log(answer.department_name);
+
+            var query = "INSERT INTO products ( product_name, department_name, year, price,stock_quantity) VALUES ('?', '?', ?, ?, ?)";
+            connection.query(query, [answer.product_name, answer.department_name, answer.year,
+            answer.price, answer.stock_quantity], function (err, res) {
+                console.table(res);
+                runSearch();
+            });
+        });
+}

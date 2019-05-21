@@ -22,3 +22,7 @@ To run program make sure to install npm packages as mentioned below from bash te
 
 ![Image of Manager Question1](Manager_Adding_Inventory.PNG)
 
+**Working functions snippit** :
+* Bamazon Manager Inserting New Row from NodeJS into MySQL Database
+
+![Image of Manager Question1](Manager_InsertingNewRow.PNG)
