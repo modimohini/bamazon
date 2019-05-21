@@ -21,7 +21,8 @@ connection.connect(function (err) {
     runSearch();
 });
 
-function runSearch() {
+function runSearch() 
+{
     inquirer
       .prompt({
         name: "action",
@@ -57,5 +58,23 @@ function runSearch() {
           connection.end();
           break;
         }
+      });
+}
+
+function saleSearch() {
+    inquirer
+      .prompt({
+        name: "product_name",
+        type: "input",
+        message: "View Products for Sale?"
+      })
+      .then(function(answer) {
+        var query = "SELECT position, song, year FROM top5000 WHERE ?";
+        connection.query(query, { artist: answer.artist }, function(err, res) {
+          for (var i = 0; i < res.length; i++) {
+            console.log("Position: " + res[i].position + " || Song: " + res[i].song + " || Year: " + res[i].year);
+          }
+          runSearch();
+        });
       });
   }
