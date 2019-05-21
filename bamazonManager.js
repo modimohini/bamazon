@@ -156,39 +156,27 @@ function AddNewProduct() {
                 name: "product_name",
                 type: "input",
                 message: "Enter Product Name: ",
-                validate: function (value) {
-                    if (isNaN(value) === false) {
-                        return true;
-                    }
-                    return false;
-                }
             },
             {
                 name: "department_name",
                 type: "input",
-                message: "Enter Department Name for inventory: ",
-                validate: function (value) {
-                    if (isNaN(value) === false) {
-                        return true;
-                    }
-                    return false;
-                }
+                message: "Enter Department Name for inventory: ",                
             },
             {
                 name: "year",
                 type: "input",
-                message: "Enter year of the product: ",
-                validate: function (value) {
+                message: "Enter Year of the product: ",
+                 validate: function (value) {
                     if (isNaN(value) === false) {
                         return true;
                     }
                     return false;
-                }
+                } 
             },
             {
                 name: "price",
                 type: "input",
-                message: "Enter price of the product: ",
+                message: "Enter Price $$ of the product: ",        
                 validate: function (value) {
                     if (isNaN(value) === false) {
                         return true;
@@ -211,10 +199,7 @@ function AddNewProduct() {
         .then(function (answer) {
             //"INSERT INTO products ( product_name, department_name, year, price,stock_quantity)
             //VALUES ("Macy", "Dress", 2019, 10, 5)";
-            console.log(answer.product_name);
-            console.log(answer.department_name);
-
-            var query = "INSERT INTO products ( product_name, department_name, year, price,stock_quantity) VALUES ('?', '?', ?, ?, ?)";
+            var query = "INSERT INTO products ( product_name, department_name, year, price,stock_quantity) VALUES (?, ?, ?, ?, ?)";
             connection.query(query, [answer.product_name, answer.department_name, answer.year,
             answer.price, answer.stock_quantity], function (err, res) {
                 console.table(res);
