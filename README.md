@@ -8,6 +8,7 @@ To run program make sure to install npm packages as mentioned below from bash te
 * $ npm install mysql require inquirer
 
 **Working functions snippit** :
+Challenge #1: Customer View (Minimum Requirement)
 * Bamazon Customer 
 
 ![Image of Questions](Capture.PNG)
@@ -18,6 +19,7 @@ To run program make sure to install npm packages as mentioned below from bash te
 ![Image of Manager Question1](ManagerJS_Question1.PNG)
 
 **Working functions snippit** :
+Challenge #2: Manager View (Next Level)
 * Bamazon Manager Adding Inventory to the List of table from NodeJS to MySQL
 
 ![Image of Manager Question1](Manager_Adding_Inventory.PNG)
@@ -26,3 +28,6 @@ To run program make sure to install npm packages as mentioned below from bash te
 * Bamazon Manager Inserting New Row from NodeJS into MySQL Database
 
 ![Image of Manager Question1](Manager_InsertingNewRow.PNG)
+
+
+Challenge #3: Supervisor View (Final Level)

@@ -32,50 +32,53 @@ function afterConnection() {
 function question1() {
     inquirer
         .prompt(
-            {
-            name: "item_id",
-            type: "input",
-            message: "What Item_ID of the product you would like to buy?"
-        })
-        .then(function (answer1) {
-            var query = "SELECT item_id, product_name, department_name, year, price,stock_quantity FROM products WHERE ?";
-            connection.query(query, answer1, function (err, res) {
-                if (err) throw err;
-                console.table(res);
-                question2();
-            });
-        });
-        
-}
-function question2() {
-    inquirer
-        .prompt(
-            
-            {
+            [
+                {
+                    name: "item_id",
+                    type: "input",
+                    message: "What Item_ID of the product you would like to buy?"
+                },
+                {
+                    name: "stock_quantity",
+                    type: "input",
+                    message: "How many units of the product you would like to buy?",
+                    validate: function (value) {
+                        if (isNaN(value) === false) {
 
-                name: "stock_quantity",
-                type: "input",
-                message: "How many units of the product you would like to buy?",
-                validate: function(value) {
-                    if (isNaN(value) === false) {
-                   
-                    return true;
+                            return true;
+                        }
+                        return false;
                     }
-                    return false;
-                  }
-            }
-        )
-        .then(function (answer2) {
-           // var query = "select price*stock_quantity as cost from products";
+                }
+            ])
+        .then(function (answer) {
+            var query = "SELECT * FROM products WHERE item_id = ? and stock_quantity > ?";
+            /* var cost = " SELECT price*(stock_quantity = ?) FROM products WHERE item_id = 1;" */
+            // connection.query(query, [answer.item_id, answer.stock_quantity], function (err, res) 
+            // {
+            //     if (err) throw err;
+            //     console.table(res);
+            //     console.log("res", res);
+            //     if (res.length === 0) {
+            //         console.log('Insufficient quantity!');
 
-            var query ="select * from products where item_id=5 and stock_quantity >?";
-            connection.query(query, [answer2.stock_quantity], function (err, res) {
+            //     }
+            //     connection.end();
+            // });
+            var cost = " SELECT price*(?) FROM products WHERE item_id = ?;"
+            connection.query(cost, [answer.stock_quantity, answer.item_id], function (err, res1) {
                 if (err) throw err;
-                console.table(res);
-            
+                console.table(res1);
+                if (res1.length === 0) {
+                    console.log('Insufficient quantity!');
 
-            });            
+                }
+                connection.end();
+            });
+
         });
 }
 
 
+
+     

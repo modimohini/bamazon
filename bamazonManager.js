@@ -140,14 +140,6 @@ function AddInventory() {
             });
         });
 }
-/* function AddNewProduct() {
-    var query = "INSERT INTO products ( product_name, department_name, year, price,stock_quantity)
-    VALUES ("Macy", "Dress", 2019, 10, 5)";
-    connection.query(query, function (err, res) {
-        console.table(res);
-        runSearch();
-    });
-} */
 
 function AddNewProduct() {
     inquirer
